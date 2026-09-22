@@ -1,0 +1,9 @@
+# Archivos generados por el notebook
+DS1-18-Datos-Properati-preparado.csv
+
+# Archivos temporales de Jupyter
+.ipynb_checkpoints/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
