@@ -14,18 +14,20 @@ El notebook utiliza el archivo:
 
 `Evaluación Parcial 1 - Dataset.zip`
 
-Antes de ejecutar el notebook, el ZIP debe estar en una de estas ubicaciones:
+El código busca automáticamente el ZIP en estas ubicaciones:
 
 - raíz del proyecto;
 - carpeta superior al notebook;
 - `/content` si se utiliza Google Colab.
 
-El código busca automáticamente el ZIP y extrae `DS1-18-Datos-Properati.csv` directamente desde él.
+Si el archivo no se encuentra y el notebook se ejecuta en Google Colab, se abrirá automáticamente el selector para subir el ZIP manualmente.
+
+Luego se extrae `DS1-18-Datos-Properati.csv` directamente desde el ZIP.
 
 ## Ejecución
 
 1. Abrir `notebook/evaluacion_parcial_1.ipynb` en Jupyter Notebook o Google Colab.
-2. Tener disponible el ZIP del dataset.
+2. Tener disponible el ZIP del dataset o subirlo cuando Colab lo solicite.
 3. Ejecutar todas las celdas en orden desde el inicio.
 4. Al final se genera `DS1-18-Datos-Properati-preparado.csv`.
 
