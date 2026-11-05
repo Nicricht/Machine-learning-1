@@ -1,0 +1,49 @@
+name: Ejecutar y validar Evaluación Parcial 2
+
+on:
+  push:
+    branches:
+      - evaluacion-parcial-2
+    paths:
+      - '.github/workflows/validate-ev2.yml'
+      - 'notebook/evaluacion_parcial_2.ipynb'
+
+permissions:
+  contents: write
+
+jobs:
+  execute-notebook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          ref: evaluacion-parcial-2
+          persist-credentials: true
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt nbclient ipykernel
+
+      - name: Ejecutar todas las celdas
+        run: |
+          jupyter nbconvert --to notebook --execute --inplace \
+            --ExecutePreprocessor.timeout=1800 \
+            --ExecutePreprocessor.cwd=. \
+            notebook/evaluacion_parcial_2.ipynb
+
+      - name: Guardar notebook ejecutado en la rama
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notebook/evaluacion_parcial_2.ipynb
+          git commit -m 'Guarda EV2 ejecutada y verificada' || exit 0
+          git push origin evaluacion-parcial-2
