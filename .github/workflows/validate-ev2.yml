@@ -32,6 +32,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt nbclient ipykernel
 
+      - name: Simular un Colab nuevo sin archivo de datos cargado
+        run: |
+          rm -f "Evaluación Parcial 1 - Dataset.zip"
+          test ! -f "Evaluación Parcial 1 - Dataset.zip"
+
       - name: Ejecutar todas las celdas
         run: |
           jupyter nbconvert --to notebook --execute --inplace \
