@@ -17,8 +17,12 @@ Repositorio de MLY0100 Machine Learning. El proyecto utiliza Properati y la meto
 - Evaluación: MAE, RMSE, R², accuracy, precision, recall, F1, ROC-AUC multiclase, matrices de confusión y validación cruzada.
 - Balance: RandomOverSampler solo sobre entrenamiento.
 
-## Ejecución
+## Evaluación Parcial 2: abrir o ejecutar en Google Colab
 
-Instalar las dependencias indicadas en `requirements.txt`, abrir el notebook correspondiente en Jupyter o Colab y ejecutar todas las celdas en orden. Mantener el ZIP Properati en la raíz del repositorio. EV2 busca primero el CSV preparado de EV1; si no existe, reconstruye la limpieza final desde el ZIP.
+**Opción 1 (ver los resultados):** abrir el notebook desde [Google Colab](https://colab.research.google.com/github/Nicricht/Machine-learning-1/blob/evaluacion-parcial-2/notebook/evaluacion_parcial_2.ipynb). Las tablas, las métricas, los gráficos y las explicaciones están guardados en el archivo, por lo que pueden revisarse sin ejecutar el código.
+
+**Opción 2 (ejecutar todo de nuevo):** en ese mismo notebook seleccionar **Entorno de ejecución → Ejecutar todas**. La primera celda de configuración comprueba las librerías necesarias y, cuando no está disponible localmente, descarga automáticamente el ZIP Properati desde este repositorio público. Luego EV2 reconstruye la limpieza final de EV1 y calcula de nuevo los resultados. **No hace falta importar manualmente el dataset** en un entorno Colab con acceso a internet.
+
+El notebook usa una muestra de hasta 12.000 observaciones para regresión y 8.000 para clasificación, por lo que ejecutar los modelos puede requerir recursos de cómputo y varios minutos. Para ejecución local también se pueden instalar las dependencias con `pip install -r requirements.txt`. El workflow `validate-ev2.yml` comprueba la ejecución sin el ZIP precargado para cubrir el caso de un entorno nuevo.
 
 EV2 utiliza muestras reproducibles de hasta 12.000 registros para regresión y 8.000 para clasificación por el costo computacional de KNN y SVM. La validación cruzada utiliza submuestras de entrenamiento. Los CSV generados son archivos de trabajo y no es necesario versionarlos.
